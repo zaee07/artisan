@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,10 @@ Route::get('/categories/{id}', function ($categoryId) {
 Route::get('/users/{id?}', function ($id = '404') {
     return " id = $id";
 })->name('user.detail');
+
+// route with controller
+Route::get('/hello/request', [HelloController::class, 'req']);
+Route::get('/hello/{name}', [HelloController::class, 'hello']);
 
 Route::redirect('/ig', '/');
 Route::fallback(function () {
