@@ -8,5 +8,11 @@
 </head>
 <body>
     <h2>test tok</h2>
+    @php
+        $link = route('user.detail', 9);
+        $l = route('user.detail');
+    @endphp
+    <a href="{{ $link }}">user</a>
+    <a href="{{ $l }}">user</a>
 </body>
 </html>

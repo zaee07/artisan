@@ -25,6 +25,24 @@ Route::get('/buy/{id}/{q?}', function ($buyId, $q=1) {
     return "barang ke- $buyId, jumlah barang $q";
 })->where('id', '[0-9]+');
 
+// named route
+
+Route::get('/products/{id}', function ($productId) {
+    return "product = $productId";
+})->name('product.detail');
+
+Route::get('/products/{product}/items/{item}', function ($productId, $itemId) {
+    return "product = $productId, item = $itemId";
+})->name('product.item.detail');
+
+Route::get('/categories/{id}', function ($categoryId) {
+    return "Category $categoryId";
+})->where('id', '[0-9]+')->name('category.detail');
+
+Route::get('/users/{id?}', function ($id = '404') {
+    return " id = $id";
+})->name('user.detail');
+
 Route::redirect('/ig', '/');
 Route::fallback(function () {
     return "404 not found || are you crazy?";
