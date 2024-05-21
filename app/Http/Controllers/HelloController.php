@@ -22,6 +22,9 @@ class HelloController extends Controller
 
     public function firstName(request $name) {
         $first = $name->input('name');
+        $except = $name->only('name');
+        $only = $name->except(['name' => false]);
+        $merge = $name->mergeIfMissing(['name' =>'oke']);
         return "hello". $first;
     }
 }
