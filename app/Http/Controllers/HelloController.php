@@ -12,11 +12,16 @@ class HelloController extends Controller
         return $this->name . $name;
     }
 
-    public function req($req) {
-        return $req->path().PHP_EOL.
-                $req->url().PHP_EOL.
-                $req->fullUrl().PHP_EOL.
-                $req->header().PHP_EOL.
-                $req->method();
+    public function req(Request $request) {
+        return $request->path(). "<br>".PHP_EOL .
+                $request->url(). PHP_EOL .
+                $request->fullUrl(). PHP_EOL .
+                $request->method(). PHP_EOL .
+                $request->header('Accept');
+    }
+
+    public function firstName(request $name) {
+        $first = $name->input('name');
+        return "hello". $first;
     }
 }

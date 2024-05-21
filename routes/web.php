@@ -45,8 +45,12 @@ Route::get('/users/{id?}', function ($id = '404') {
 })->name('user.detail');
 
 // route with controller
-Route::get('/hello/request', [HelloController::class, 'req']);
-Route::get('/hello/{name}', [HelloController::class, 'hello']);
+Route::get('/request', [HelloController::class, 'req']);
+// Route::get('/hello/{name}', [HelloController::class, 'hello']);
+
+// request input nested
+Route::get('/input/hello', [HelloController::class, 'firstName']);
+Route::post('/input/hello', [HelloController::class, 'firstName']);
 
 Route::redirect('/ig', '/');
 Route::fallback(function () {
