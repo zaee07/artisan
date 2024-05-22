@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,10 @@ Route::get('/request', [HelloController::class, 'req']);
 // request input nested
 Route::get('/input/hello', [HelloController::class, 'firstName']);
 Route::post('/input/hello', [HelloController::class, 'firstName']);
+Route::post('/file/upload', [FileController::class, 'foto']);
+Route::get('/download', [FileController::class, 'download']);
+Route::get('/show', [FileController::class, 'show']);
+Route::get('/save-file', [FileController::class, 'save']);
 
 Route::redirect('/ig', '/');
 Route::fallback(function () {
