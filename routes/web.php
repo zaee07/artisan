@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -53,9 +54,14 @@ Route::get('/request', [HelloController::class, 'req']);
 Route::get('/input/hello', [HelloController::class, 'firstName']);
 Route::post('/input/hello', [HelloController::class, 'firstName']);
 Route::post('/file/upload', [FileController::class, 'foto']);
-Route::get('/download', [FileController::class, 'download']);
+Route::get('/download', [FileController::class, 'download'])->name('download');
 Route::get('/show', [FileController::class, 'show']);
 Route::get('/save-file', [FileController::class, 'save']);
+
+// redirect
+Route::get('/redirect-to-download', [RedirectController::class, 'toDownload'])->name('redirect.to.download');
+Route::get('/redirect-to-website', [RedirectController::class, 'toWebsite'])->name('redirect.to.website');
+
 
 Route::redirect('/ig', '/');
 Route::fallback(function () {

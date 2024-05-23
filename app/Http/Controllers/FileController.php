@@ -20,7 +20,7 @@ class FileController extends Controller
     public function show(request $req) {
         return response()->file(storage_path('app/file.txt'));
     }
-    public function download(request $req) {
+    public function download() {
         return response()->download(storage_path('app/file.txt'));
     }
 
