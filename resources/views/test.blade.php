@@ -14,5 +14,6 @@
     @endphp
     <a href="{{ $link }}">user</a>
     <a href="{{ $l }}">user</a>
+    <a href="/redirect-to-download">Download File.txt</a><a href="/redirect-to-website">Lanjutkan ke situs luar</a>
 </body>
 </html>

@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 // view without controller
-Route::view('1', 'test', ['title' => 'tes1']);
+Route::view('testong', 'test', ['title' => 'tes1']);
 Route::get('2', function () {
     return view('test', ['title' => 'tes2']);
 });
