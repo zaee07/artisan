@@ -49,15 +49,15 @@ Route::get('/users/{id?}', function ($id = '404') {
 // route with controller
 Route::get('/request', [HelloController::class, 'req']);
 // Route::get('/hello/{name}', [HelloController::class, 'hello']);
+Route::get('/input/hello', [HelloController::class, 'firstName']);
+Route::post('/input/hello', [HelloController::class, 'firstName']);
 
 // request input nested with route group
-Route::prefix('/response/type')->group(function () {
-    Route::get('/input/hello', [HelloController::class, 'firstName']);
-    Route::post('/input/hello', [HelloController::class, 'firstName']);
-    Route::post('/file/upload', [FileController::class, 'foto']);
-    Route::get('/download', [FileController::class, 'download'])->name('download');
-    Route::get('/show', [FileController::class, 'show']);
-    Route::get('/save-file', [FileController::class, 'save']);
+Route::prefix('/response/type')->controller([HelloController::class])->group(function () {
+    Route::post('/file/upload', 'foto');
+    Route::get('/download', 'download')->name('download');
+    Route::get('/show', 'show');
+    Route::get('/save-file', 'save');
 });
 
 // redirect
