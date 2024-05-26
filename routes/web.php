@@ -11,6 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 // view without controller
+
 Route::view('testong', 'test', ['title' => 'tes1']);
 Route::get('2', function () {
     return view('test', ['title' => 'tes2']);
@@ -61,9 +62,10 @@ Route::prefix('/response/type')->controller([HelloController::class])->group(fun
 });
 
 // redirect
-Route::get('/redirect-to-download', [RedirectController::class, 'toDownload'])->name('redirect.to.download');
-Route::get('/redirect-to-website', [RedirectController::class, 'toWebsite'])->name('redirect.to.website');
-
+Route::prefix('/redirect-to')->controller([RedirectController::class])->group(function () {
+    Route::get('/download', 'toDownload')->name('redirect.to.download');
+    Route::get('/website', 'toWebsite')->name('redirect.to.website');
+});    
 
 Route::redirect('/ig', '/');
 Route::fallback(function () {
