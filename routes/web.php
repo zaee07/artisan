@@ -50,13 +50,15 @@ Route::get('/users/{id?}', function ($id = '404') {
 Route::get('/request', [HelloController::class, 'req']);
 // Route::get('/hello/{name}', [HelloController::class, 'hello']);
 
-// request input nested
-Route::get('/input/hello', [HelloController::class, 'firstName']);
-Route::post('/input/hello', [HelloController::class, 'firstName']);
-Route::post('/file/upload', [FileController::class, 'foto']);
-Route::get('/download', [FileController::class, 'download'])->name('download');
-Route::get('/show', [FileController::class, 'show']);
-Route::get('/save-file', [FileController::class, 'save']);
+// request input nested with route group
+Route::prefix('/response/type')->group(function () {
+    Route::get('/input/hello', [HelloController::class, 'firstName']);
+    Route::post('/input/hello', [HelloController::class, 'firstName']);
+    Route::post('/file/upload', [FileController::class, 'foto']);
+    Route::get('/download', [FileController::class, 'download'])->name('download');
+    Route::get('/show', [FileController::class, 'show']);
+    Route::get('/save-file', [FileController::class, 'save']);
+});
 
 // redirect
 Route::get('/redirect-to-download', [RedirectController::class, 'toDownload'])->name('redirect.to.download');
