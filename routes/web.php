@@ -67,5 +67,5 @@ Route::get('/redirect-to-website', [RedirectController::class, 'toWebsite'])->na
 
 Route::redirect('/ig', '/');
 Route::fallback(function () {
-    return "404 not found || are you crazy?";
+    return "404 not found || are you crazy? awokawok";
 });
