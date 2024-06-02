@@ -55,13 +55,13 @@ Route::post('/input/hello', [HelloController::class, 'firstName']);
 
 // request input nested with route group
 Route::prefix('/response/type')->controller([HelloController::class])->group(function () {
-    Route::post('/file/upload', 'foto');
-    Route::get('/download', 'download')->name('download');
-    Route::get('/show', 'show');
-    Route::get('/save-file', 'save');
+    // Route::post('/file/upload', 'foto');
+    // Route::get('/download', 'download')->name('download');
+    // Route::get('/show', 'show');
+    // Route::get('/save-file', 'save');
 });
 
-// redirect
+//redirect
 Route::prefix('/redirect-to')->controller([RedirectController::class])->group(function () {
     Route::get('/download', 'toDownload')->name('redirect.to.download');
     Route::get('/website', 'toWebsite')->name('redirect.to.website');
